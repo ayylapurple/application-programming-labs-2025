@@ -1,8 +1,10 @@
 import os
-from typing import List, Tuple
+
 import pandas as pd
 import numpy as np
 import soundfile as sf
+
+from typing import List, Tuple
 
 
 def get_file_paths(folder: str) -> List[Tuple[str, str]]:
@@ -30,7 +32,7 @@ def read_audio_mono(path: str) -> np.ndarray:
     """
     audio, _ = sf.read(path)
 
-    if audio.ndim == 2:  # стерео → моно
+    if audio.ndim == 2:
         audio = audio.mean(axis=1)
 
     return audio
